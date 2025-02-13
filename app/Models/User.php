@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Enums\UserGender;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'avatar',
+        'phone',
+        'gender',
+        'date_of_birth',
+        'address',
     ];
 
     /**
@@ -43,6 +50,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'gender' => UserGender::class,
         ];
     }
 }

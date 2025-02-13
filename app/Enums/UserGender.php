@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Enums;
+
+enum UserGender: string
+{
+    case MALE = 'Laki-Laki';
+    case FEMALE = 'Perempuan';
+
+    public static function options(): array
+    {
+        return collect(self::cases())->map(fn($item) => [
+            'value' => $items->value,
+            'label' => $item->label,
+        ])->values()->toArray();
+    }
+}
