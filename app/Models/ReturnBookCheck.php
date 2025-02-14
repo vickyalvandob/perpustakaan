@@ -20,4 +20,9 @@ class ReturnBookCheck extends Model
         ];
     }
 
+    public function returnBook(): BelongsTo
+    {
+        return $this->belongsTo(ReturnBook::class);
+    }
+
 }

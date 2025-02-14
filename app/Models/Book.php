@@ -32,4 +32,25 @@ class Book extends Model
             'status' =>  BookStatus::class,
         ];
     }
+
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function stock(): HasOne
+    {
+        return $this->hasOne(Stock::class);
+    }
+
+    public function loans(): HasMany
+    {
+        return $this->hasMany(Loan::class);
+    }
+
+    public function publisher(): BelongsTo
+    {
+        return $this->belongsTo(Publisher::class);
+    }
 }

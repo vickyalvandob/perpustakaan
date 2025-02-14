@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('fine_settings', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('late_fee_per_day')->default(7000);
+            $table->unsignedInteger('damage_fee_percentage')->default(50);
+            $table->unsignedInteger('lost_fee_percentage')->default(100);
             $table->timestamps();
         });
     }
