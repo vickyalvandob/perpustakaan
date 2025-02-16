@@ -19,23 +19,23 @@ trait HasFile
     {
        if($request->hasFile($column)){
 
-        if($mdoel->column){
-            Storage::delete($model->column);
+        if($model->$column){
+            Storage::delete($model->$column);
         }
-        $thumbnail= $request->file(column)->store($folder);
+        $thumbnail= $request->file($column)->store($folder);
 
        }else{
-        $thumbnail = $model->column;
+        $thumbnail = $model->$column;
        }
 
        return $thumbnail;
     }
 
 
-    public function delete_file( Model $model, string $column): ?string
+    public function delete_file( Model $model, string $column): void
     {
-        if($mdoel->column){
-            Storage::delete($model->column);
+        if($model->$column){
+            Storage::delete($model->$column);
         }
     }
 
