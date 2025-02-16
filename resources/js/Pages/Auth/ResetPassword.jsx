@@ -1,4 +1,5 @@
 import InputError from '@/Components/InputError';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
 import { Label } from '@/Components/ui/label';
@@ -36,22 +37,7 @@ export default function ResetPassword({ token, email }) {
                                 </p>
                             </div>
 
-                            {/* form */}
-                        </div>
-                    </div>
-                </div>
-
-                <div className="hidden bg-muted lg:block">
-                    <img
-                        src="/images/login.webp"
-                        alt="Login"
-                        className="h-full w-full object-cover dark:brightness-[0.4] dark:grayscale"
-                    />
-                </div>
-            </div>
-
-            <div>
-                <form onSubmit={onHandleSubmit}>
+                            <form onSubmit={onHandleSubmit}>
                     <div className="grid gap-4">
                         <div className="grid gap-2">
                             <div>
@@ -105,7 +91,20 @@ export default function ResetPassword({ token, email }) {
                         </Button>
                     </div>
                 </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="hidden bg-muted lg:block">
+                    <img
+                        src="/images/login.webp"
+                        alt="Login"
+                        className="h-full w-full object-cover dark:brightness-[0.4] dark:grayscale"
+                    />
+                </div>
             </div>
+
+      
         </>
     );
 }
