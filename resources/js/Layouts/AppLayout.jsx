@@ -18,11 +18,10 @@ import Sidebar from './Partials/Sidebar';
 import SidebarResponsive from './Partials/SidebarResponsive';
 
 export default function AppLayout({ title, children }) {
-    
     const auth = usePage().props.auth.user;
     console.log(auth);
-    const {url} = usePage();
-    
+    const { url } = usePage();
+
     return (
         <>
             <Head title={title} />
@@ -72,7 +71,7 @@ export default function AppLayout({ title, children }) {
                                     <span>Hi. {auth.name}</span>
                                     <Avatar>
                                         <AvatarImage src={auth.avatar} />
-                                        <AvatarFallback>{auth.name.substring(0,1)}</AvatarFallback>
+                                        <AvatarFallback>{auth.name.substring(0, 1)}</AvatarFallback>
                                     </Avatar>
                                 </Button>
                             </DropdownMenuTrigger>

@@ -6,18 +6,11 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::redirect('/', 'login');
 
 Route::get('testing', fn() => inertia('Testing'));
 
-Route::controller(DashboardController::class)->middleware('auth')->group(function () {
+Route::controller(DashboardController::class)->middleware('auth', 'password.confirm')->group(function () {
     Route::get('dashboard','index')->name('dashboard');
 });
 
