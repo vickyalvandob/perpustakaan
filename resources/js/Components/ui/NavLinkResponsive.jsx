@@ -13,7 +13,7 @@ export default function NavLink({ active = false, url = '#', title, icon: Icon, 
                 'flex items-center gap-3 rounded-lg p-2 font-medium transition-all',
             )}
         >
-            <Icon classname="w-4 h-4" />
+            <Icon className="w-4 h-4" />
             {title}
         </Link>
     );

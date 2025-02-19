@@ -1,5 +1,5 @@
-import { Button } from '@/Components/ui/button';
 import InputError from '@/Components/InputError';
+import { Button } from '@/Components/ui/button';
 import { Card, CardContent } from '@/Components/ui/card';
 import HeaderTitle from '@/Components/ui/HeaderTitle';
 import { Input } from '@/Components/ui/input';
@@ -60,7 +60,7 @@ export default function Create(props) {
             <Card>
                 <CardContent className="p-6">
                     <form onSubmit={onHandleSubmit} className="space-y-6">
-                        <div className="5 grid w-full items-center gap-1">
+                        <div className="grid w-full items-center gap-1.5">
                             <Label htmlFor="name">Nama</Label>
                             <Input
                                 name="name"
@@ -70,9 +70,9 @@ export default function Create(props) {
                                 value={data.name}
                                 onChange={onHandleChange}
                             />
-                              {errors.name && <InputError message={errors.name} />}
+                            {errors.name && <InputError message={errors.name} />}
                         </div>
-                        <div className="5 grid w-full items-center gap-1">
+                        <div className="grid w-full items-center gap-1.5">
                             <Label htmlFor="description">Deskripsi</Label>
                             <Textarea
                                 name="description"
@@ -81,9 +81,9 @@ export default function Create(props) {
                                 value={data.description}
                                 onChange={onHandleChange}
                             ></Textarea>
-                              {errors.description && <InputError message={errors.description} />}
+                            {errors.description && <InputError message={errors.description} />}
                         </div>
-                        <div className="5 grid w-full items-center gap-1">
+                        <div className="grid w-full items-center gap-1.5">
                             <Label htmlFor="cover">Cover</Label>
                             <Input
                                 name="cover"
@@ -92,7 +92,7 @@ export default function Create(props) {
                                 onChange={(e) => setData(e.target.name, e.target.files[0])}
                                 ref={fileInputCover}
                             />
-                              {errors.cover && <InputError message={errors.cover} />}
+                            {errors.cover && <InputError message={errors.cover} />}
                         </div>
                         <div className="flex justify-end gap-x-2">
                             <Button type="button" variant="ghost" size="lg" onClick={onHandleReset}>

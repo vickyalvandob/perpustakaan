@@ -8,17 +8,19 @@ import { Textarea } from '@/Components/ui/textarea';
 import AppLayout from '@/Layouts/AppLayout';
 import { flashMessage } from '@/lib/utils';
 import { Link, useForm } from '@inertiajs/react';
-import { IconArrowLeft, IconCategory } from '@tabler/icons-react';
+import { IconArrowLeft, IconBuildingCommunity } from '@tabler/icons-react';
 import { useRef } from 'react';
 import { toast } from 'sonner';
 
-export default function Edit(props) {
-    const fileInputCover = useRef(null);
+export default function Create(props) {
+    const fileInputLogo = useRef(null);
 
     const { data, setData, reset, post, processing, errors } = useForm({
-        name: props.category.name ?? '',
-        description: props.category.description ?? '',
-        cover: null,
+        name: '',
+        address: '',
+        email: '',
+        phone: '',
+        logo: null,
         _method: props.page_settings.method,
     });
 
@@ -38,7 +40,7 @@ export default function Edit(props) {
 
     const onHandleReset = () => {
         reset();
-        fileInputCover.current.value = null;
+        fileInputLogo.current.value = null;
     };
 
     return (
@@ -47,11 +49,11 @@ export default function Edit(props) {
                 <HeaderTitle
                     title={props.page_settings.title}
                     subtitle={props.page_settings.subtitle}
-                    icon={IconCategory}
+                    icon={IconBuildingCommunity}
                 />
 
                 <Button variant="orange" size="lg" asChild>
-                    <Link href={route('admin.category.index')}>
+                    <Link href={route('admin.publisher.index')}>
                         <IconArrowLeft className="size-4" /> Kembali
                     </Link>
                 </Button>
@@ -73,26 +75,50 @@ export default function Edit(props) {
                             {errors.name && <InputError message={errors.name} />}
                         </div>
                         <div className="grid w-full items-center gap-1.5">
-                            <Label htmlFor="description">Deskripsi</Label>
-                            <Textarea
-                                name="description"
-                                id="description"
-                                placeholder="Masukan deskripsi"
-                                value={data.description}
+                            <Label htmlFor="email">Email</Label>
+                            <Input
+                                name="email"
+                                id="email"
+                                type="email"
+                                placeholder="Masukan email"
+                                value={data.email}
                                 onChange={onHandleChange}
-                            ></Textarea>
-                            {errors.description && <InputError message={errors.description} />}
+                            />
+                            {errors.email && <InputError message={errors.email} />}
                         </div>
                         <div className="grid w-full items-center gap-1.5">
-                            <Label htmlFor="cover">Cover</Label>
+                            <Label htmlFor="phone">No. Handphone</Label>
                             <Input
-                                name="cover"
-                                id="cover"
+                                name="phone"
+                                id="phone"
+                                type="phone"
+                                placeholder="Masukan No. Handphone"
+                                value={data.phone}
+                                onChange={onHandleChange}
+                            />
+                            {errors.phone && <InputError message={errors.phone} />}
+                        </div>
+                        <div className="grid w-full items-center gap-1.5">
+                            <Label htmlFor="address">Alamat</Label>
+                            <Textarea
+                                name="address"
+                                id="address"
+                                placeholder="Masukan alamat.."
+                                value={data.address}
+                                onChange={onHandleChange}
+                            ></Textarea>
+                            {errors.address && <InputError message={errors.address} />}
+                        </div>
+                        <div className="grid w-full items-center gap-1.5">
+                            <Label htmlFor="logo">Logo</Label>
+                            <Input
+                                name="logo"
+                                id="logo"
                                 type="file"
                                 onChange={(e) => setData(e.target.name, e.target.files[0])}
-                                ref={fileInputCover}
+                                ref={fileInputLogo}
                             />
-                            {errors.cover && <InputError message={errors.cover} />}
+                            {errors.logo && <InputError message={errors.logo} />}
                         </div>
                         <div className="flex justify-end gap-x-2">
                             <Button type="button" variant="ghost" size="lg" onClick={onHandleReset}>
@@ -109,4 +135,4 @@ export default function Edit(props) {
     );
 }
 
-Edit.layout = (page) => <AppLayout children={page} title={page.props.page_settings.title} />;
+Create.layout = (page) => <AppLayout children={page} title={page.props.page_settings.title} />;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Throwable;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Traits\HasFile;
@@ -22,14 +23,26 @@ class CategoryController extends Controller
     {
         $categories = Category::query()
         ->select(['id', 'name', 'slug', 'cover', 'created_at'])
-        ->get();
+        ->filter(request()->only(['search']))
+        ->sorting(request()->only(['field', 'direction']))
+        ->paginate(request()->load ?? 10)
+        ->withQueryString();
         
         return Inertia::render('Admin/Categories/Index', [
-            'categories' => CategoryResource::collection($categories),
+            'categories' => CategoryResource::collection($categories)->additional([
+                'meta' => [
+                    'has_pages' => $categories->hasPages(),
+                ],
+            ]),
             'page_settings' => [
                 'title' => 'Kategori',
                 'subtitle' => 'Menampilkan semua data kategori yang tersedia pada platform ini'
-            ]
+            ],
+            'state' => [
+                'page' => request()->page ?? 1,
+                'search' => request()->search ?? '',
+                'load' => 10,
+            ],
         ]);
     }
 
@@ -74,7 +87,7 @@ class CategoryController extends Controller
                 'title' => 'Edit Kategori',
                 'subtitle' => 'Edit kategori di sini. Klik simpan setelah selesai',
                 'method' => 'PUT',
-                'action' => route('admin.category.edit', $category)
+                'action' => route('admin.category.update', $category)
             ],
             'category' => $category,
         ]);
