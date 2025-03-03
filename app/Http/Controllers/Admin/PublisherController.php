@@ -70,7 +70,7 @@ class PublisherController extends Controller
                 'logo' => $this->upload_file($request, 'logo', 'publishers'),
             ]);
 
-            flashMessage(MessageType::CREATED->message('Kategori'));
+            flashMessage(MessageType::CREATED->message('Penerbit'));
 
             return to_route('admin.publisher.index');
 
@@ -86,7 +86,7 @@ class PublisherController extends Controller
     {
         return inertia('Admin/Publishers/Edit', [
             'page_settings' => [
-                'title' => 'Edit Kategori',
+                'title' => 'Edit Penerbit',
                 'subtitle' => 'Edit penerbit di sini. Klik simpan setelah selesai',
                 'method' => 'PUT',
                 'action' => route('admin.publisher.update', $publisher)
@@ -107,7 +107,7 @@ class PublisherController extends Controller
                 'logo' => $this->update_file($request, $publisher, 'logo', 'publishers'),
             ]);
 
-            flashMessage(MessageType::CREATED->message('Publisher'));
+            flashMessage(MessageType::UPDATED->message('Publisher'));
 
             return to_route('admin.publisher.index');
 
@@ -127,7 +127,7 @@ class PublisherController extends Controller
             $this->delete_file($publisher, 'logo');
             $publisher->delete();
 
-            flashMessage(MessageType::CREATED->message('Kategori'));
+            flashMessage(MessageType::CREATED->message('Penerbit'));
 
             return to_route('admin.publisher.index');
 
