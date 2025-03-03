@@ -70,16 +70,16 @@ export default function Create(props) {
                 <CardContent className="p-6">
                     <form onSubmit={onHandleSubmit} className="space-y-6">
                         <div className="grid w-full items-center gap-1.5">
-                            <Label htmlFor="name">Nama</Label>
+                            <Label htmlFor="title">Judul</Label>
                             <Input
-                                name="name"
-                                id="name"
+                                name="title"
+                                id="title"
                                 type="text"
-                                placeholder="Masukan nama"
-                                value={data.name}
+                                placeholder="Masukan judul"
+                                value={data.title}
                                 onChange={onHandleChange}
                             />
-                            {errors.name && <InputError message={errors.name} />}
+                            {errors.title && <InputError message={errors.title} />}
                         </div>
                         <div className="grid w-full items-center gap-1.5">
                             <Label htmlFor="email">Email</Label>
