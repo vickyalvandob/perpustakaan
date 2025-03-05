@@ -103,7 +103,7 @@ class CategoryController extends Controller
                 'cover' => $this->update_file($request, $category, 'cover', 'categories'),
             ]);
 
-            flashMessage(MessageType::CREATED->message('Kategori'));
+            flashMessage(MessageType::UPDATED->message('Kategori'));
 
             return to_route('admin.category.index');
 

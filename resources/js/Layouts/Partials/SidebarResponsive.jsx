@@ -53,7 +53,12 @@ export default function Sidebar({ url, auth }) {
                         title="Penerbit"
                         icon={IconBuildingCommunity}
                     />
-                    
+                     <NavLinkResponsive
+                        url={route('admin.book.index')}
+                        active={url.startsWith('/admin/books')}
+                        title="Buku"
+                        icon={IconBooks}
+                    />
                
                 <NavLinkResponsive url="#" title="Buku" icon={IconBooks} />
                 <NavLinkResponsive url="#" title="Pengguna" icon={IconUsersGroup} />
